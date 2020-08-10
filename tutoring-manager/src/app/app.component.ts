@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  debugMenuActive: boolean = false;
   title = 'tutoring-manager';
+
+  toggleDebugMenu(): void {
+    this.debugMenuActive = !this.debugMenuActive;
+  }
+
+
 }
