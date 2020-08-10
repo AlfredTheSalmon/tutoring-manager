@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 .logo-width {
-  width: 600px;
+  width: 300px;
 }
 
 .container {
@@ -22,6 +22,8 @@ body {
   padding: 10px;
   background: #f1f1f1;
 }
+
+
 
 /* Header/Blog Title */
 .header {
@@ -56,6 +58,10 @@ body {
   color: black;
 }
 
+.topnav a.right {
+  float: right;
+}
+
 .left-column {
   float: left;
   width: 20%;
@@ -66,7 +72,7 @@ body {
 /* Create two unequal columns that floats next to each other */
 /* Left column */
 .center-column {   
-  float: center;
+  float: left;
   width: 60%;
 }
 
