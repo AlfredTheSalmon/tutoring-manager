@@ -20,7 +20,7 @@
 body {
   font-family: Arial;
   padding: 10px;
-  background: #f1f1f1;
+  background: #222831;
 }
 
 .float-right {
@@ -35,7 +35,7 @@ body {
 }
 .alert-danger{
   color: #fff;
-  background-color: #e67878;
+  background-color: #b73536;
   border-color: #f5c6cb;
 }
 
@@ -72,7 +72,7 @@ body {
 .header {
   padding: 30px;
   text-align: center;
-  background: white;
+  background: #424242;
 }
 
 .header h1 {
@@ -82,7 +82,7 @@ body {
 /* Style the top navigation bar */
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #616161;
 }
 
 /* Style the topnav links */
@@ -108,7 +108,6 @@ body {
 .left-column {
   float: left;
   width: 20%;
-  background-color: #f1f1f1;
   padding-right: 20px;
 }
 
@@ -123,7 +122,6 @@ body {
 .right-column {
   float: right;
   width: 20%;
-  background-color: #f1f1f1;
   padding-left: 20px;
 }
 
@@ -136,7 +134,7 @@ body {
 
 /* Add a card effect for articles */
 .card {
-  background-color: white;
+  background-color: #616161;
   padding: 20px;
   margin-top: 20px;
 }

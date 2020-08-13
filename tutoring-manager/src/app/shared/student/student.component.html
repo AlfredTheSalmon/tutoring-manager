@@ -1,3 +1,35 @@
-<div class="student-card">
-  hi
+<div class="card student-card" *ngIf="!loadingInfo">
+  <div class="row">
+    <div class="col-md-6 panel">
+      <div class="panel-title">
+        General
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="label">
+            Name
+          </div>
+          <div class="value">
+            {{info.name}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="label">
+            Age
+          </div>
+          <div class="value">
+            {{info.age}}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="label">
+            Gender
+          </div>
+          <div class="value">
+            {{info.gender}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
