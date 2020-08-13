@@ -1,0 +1,6 @@
+<div *ngFor="let m of getMessages(); let i = index" class="alert"
+  [ngClass]="{'alert-danger' : m.type == 0, 'alert-warning' : m.type == 1, 'alert-success' : m.type == 2}" role="alert">
+  {{m.text}}
+  <button class="btn btn-icon float-right expand-btn close-button-custom" (click)="removeMessage(i)"><img
+      class="alert-image-holder" src="assets/icons/whitecross.png" alt=""></button>
+</div>
