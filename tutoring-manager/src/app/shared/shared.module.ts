@@ -9,6 +9,7 @@ import { TutoringLessonComponent } from './tutoring-lesson/tutoring-lesson.compo
 import { ProfessorComponent } from './professor/professor.component';
 import { StudentComponent } from './student/student.component';
 import { MessagesComponent } from './messages/messages.component';
+import { TranslatePipe } from './translate-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MessagesComponent } from './messages/messages.component';
     TutoringLessonComponent,
     ProfessorComponent,
     StudentComponent,
-    MessagesComponent
+    MessagesComponent,
+    TranslatePipe
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { MessagesComponent } from './messages/messages.component';
     TutoringLessonComponent,
     ProfessorComponent,
     StudentComponent,
-    MessagesComponent
+    MessagesComponent,
+    TranslatePipe
   ]
 })
 export class SharedModule { }

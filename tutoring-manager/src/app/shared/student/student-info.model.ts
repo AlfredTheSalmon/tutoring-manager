@@ -3,13 +3,14 @@ import { UserStatus } from '../enum/user-status.enum';
 export class StudentInfo {
   id: string;
   name: string;
+  fullName: string;
   age: number;
-  genre: boolean; //1 = male; 0 = female
+  gender: number; //1 = male; 0 = female
   phone: number;
   parent1: string;
-  parent1genre: boolean;
+  parent1gender: number;
   parent2: string;
-  parent2genre: boolean;
+  parent2gender: number;
   parentPhone: number;
   address: string;
   email: string;

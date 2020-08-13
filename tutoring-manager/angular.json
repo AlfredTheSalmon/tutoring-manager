@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/plugins/bootstrap/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -120,6 +121,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "tutoring-manager"
 }

@@ -1,19 +1,46 @@
 <div class="card student-card" *ngIf="!loadingInfo">
+  <div class="title">
+    {{info.name}}'s information ({{info.id}})
+  </div>
   <div class="row">
-    <div class="col-md-6 panel">
+    <div class="col-md-5 panel">
       <div class="panel-title">
         General
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Id
+          </div>
+          <div class="value">
+            {{info.id}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Status
+          </div>
+          <div class="value">
+            {{info.status | translate: 'userStatus'}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
           <div class="label">
             Name
           </div>
           <div class="value">
-            {{info.name}}
+            {{info.fullName}}
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Gender
+          </div>
+          <div class="value">
+            {{info.gender | translate: 'gender'}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
           <div class="label">
             Age
           </div>
@@ -21,14 +48,103 @@
             {{info.age}}
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Address
+          </div>
+          <div class="value">
+            {{info.address}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 panel">
+      <div class="panel-title">
+        Family
+      </div>
+      <div class="row">
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Parent
+          </div>
+          <div class="value">
+            {{info.parent1}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
           <div class="label">
             Gender
           </div>
           <div class="value">
-            {{info.gender}}
+            {{info.parent1gender | translate: 'gender'}}
           </div>
         </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Parent
+          </div>
+          <div class="value">
+            {{info.parent2}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Gender
+          </div>
+          <div class="value">
+            {{info.parent2gender | translate: 'gender'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 panel">
+      <div class="panel-title">
+        Comunications
+      </div>
+      <div class="row">
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Parent's Email
+          </div>
+          <div class="value">
+            {{info.parentEmail}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Student's Email
+          </div>
+          <div class="value">
+            {{info.email}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Parent's Phone
+          </div>
+          <div class="value">
+            {{info.parentPhone}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Student's Phone
+          </div>
+          <div class="value">
+            {{info.phone}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="info.notes == null" class="col-md-5"></div>
+    <div *ngIf="info.notes != null" class="col-md-5 panel">
+      <div class="panel-title">
+        Comunications
+      </div>
+      <div *ngFor="let note of info.notes; index as i" class="value col-md-12">
+        <span class="text-bold">{{i+1}}</span> - {{note}}
       </div>
     </div>
   </div>

@@ -4,6 +4,7 @@ import { MessagesService } from '../messages/messages.service';
 import { StudentInfo } from './student-info.model';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user-service.service';
+import { UserStatus } from '../enum/user-status.enum';
 
 @Component({
   selector: 'app-student',
@@ -44,9 +45,27 @@ export class StudentComponent implements OnInit {
 
   getStudentInfo(studentId: string) {
     let studentInfo = new StudentInfo;
+    studentInfo.id = "123";
     studentInfo.age = 12;
     studentInfo.name = "Miguel";
-    studentInfo.genre = true;
+    studentInfo.fullName = "Miguel Rodrigues de Carvalho";
+    studentInfo.gender = 1;
+    studentInfo.parent1 = "Mário";
+    studentInfo.parent1gender = 1;
+    studentInfo.parent2 = "Maria";
+    studentInfo.parent2gender = 0;
+    studentInfo.parentEmail = "whatever@gmail.com";
+    studentInfo.email = "nothing@gmail.com";
+    studentInfo.parentPhone = 123456789;
+    studentInfo.status = UserStatus.ACTIVE;
+    studentInfo.address = "address 1";
+
+    let note1 = "note 1";
+    let note2 = "note 2";
+    let note3 = "note 3";
+
+    studentInfo.notes = [note1, note2, note3];
+
     this.info = studentInfo;
     this.loadingInfo = false;
     // this.userService.getStudent(studentId).subscribe(
