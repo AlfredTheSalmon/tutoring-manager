@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Message } from './message';
+import { Message } from '../models/message';
 import { MessageType } from '../enum/message-type.enum';
 
 

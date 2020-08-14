@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ComponentMode } from '../enum/component-mode.enum';
 import { MessagesService } from '../messages/messages.service';
-import { StudentInfo } from './student-info.model';
+import { StudentInfo } from '../models/student-info.model';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user-service.service';
 import { UserStatus } from '../enum/user-status.enum';
@@ -11,7 +11,7 @@ import { UserStatus } from '../enum/user-status.enum';
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent implements OnInit, OnDestroy {
 
   constructor(
     private messageService: MessagesService,
@@ -50,6 +50,7 @@ export class StudentComponent implements OnInit {
     studentInfo.name = "Miguel";
     studentInfo.fullName = "Miguel Rodrigues de Carvalho";
     studentInfo.gender = 1;
+    studentInfo.yearOfSchool = "9th";
     studentInfo.parent1 = "Mário";
     studentInfo.parent1gender = 1;
     studentInfo.parent2 = "Maria";
@@ -59,6 +60,8 @@ export class StudentComponent implements OnInit {
     studentInfo.parentPhone = 123456789;
     studentInfo.status = UserStatus.ACTIVE;
     studentInfo.address = "address 1";
+    studentInfo.phone = 123456789;
+    studentInfo.iban = "PT50123456789123456789";
 
     let note1 = "note 1";
     let note2 = "note 2";
@@ -81,6 +84,10 @@ export class StudentComponent implements OnInit {
 
   comunicateInfo(info: StudentInfo) {
 
+  }
+
+  ngOnDestroy() {
+    this.messageService.clear();
   }
 
 }

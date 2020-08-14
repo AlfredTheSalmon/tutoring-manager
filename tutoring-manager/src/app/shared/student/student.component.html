@@ -29,7 +29,7 @@
             Name
           </div>
           <div class="value">
-            {{info.fullName}}
+            {{info.fullName | formatString}}
           </div>
         </div>
         <div class="col-md-6 panel-child">
@@ -50,10 +50,10 @@
         </div>
         <div class="col-md-6 panel-child">
           <div class="label">
-            Address
+            School Year
           </div>
           <div class="value">
-            {{info.address}}
+            {{info.yearOfSchool | formatString}}
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@
             Parent
           </div>
           <div class="value">
-            {{info.parent1}}
+            {{info.parent1 | formatString}}
           </div>
         </div>
         <div class="col-md-6 panel-child">
@@ -79,20 +79,28 @@
             {{info.parent1gender | translate: 'gender'}}
           </div>
         </div>
-        <div class="col-md-6 panel-child">
+        <div class="col-md-6 panel-child" *ngIf="info.parent2 != null">
           <div class="label">
             Parent
           </div>
           <div class="value">
-            {{info.parent2}}
+            {{info.parent2 | formatString}}
           </div>
         </div>
-        <div class="col-md-6 panel-child">
+        <div class="col-md-6 panel-child" *ngIf="info.parent2 != null">
           <div class="label">
             Gender
           </div>
           <div class="value">
             {{info.parent2gender | translate: 'gender'}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Address
+          </div>
+          <div class="value">
+            {{info.address | formatString}}
           </div>
         </div>
       </div>
@@ -107,7 +115,7 @@
             Parent's Email
           </div>
           <div class="value">
-            {{info.parentEmail}}
+            {{info.parentEmail | formatString}}
           </div>
         </div>
         <div class="col-md-6 panel-child">
@@ -115,7 +123,7 @@
             Student's Email
           </div>
           <div class="value">
-            {{info.email}}
+            {{info.email | formatString}}
           </div>
         </div>
         <div class="col-md-6 panel-child">
@@ -134,6 +142,14 @@
             {{info.phone}}
           </div>
         </div>
+        <div class="col-md-12 panel-child">
+          <div class="label">
+            Iban
+          </div>
+          <div class="value">
+            {{info.iban | formatString}}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -141,7 +157,7 @@
     <div *ngIf="info.notes == null" class="col-md-5"></div>
     <div *ngIf="info.notes != null" class="col-md-5 panel">
       <div class="panel-title">
-        Comunications
+        Notes
       </div>
       <div *ngFor="let note of info.notes; index as i" class="value col-md-12">
         <span class="text-bold">{{i+1}}</span> - {{note}}

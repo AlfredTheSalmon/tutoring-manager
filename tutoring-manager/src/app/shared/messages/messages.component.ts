@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MessagesService } from './messages.service';
 import { Router, ResolveEnd } from '@angular/router';
-import { Message } from './message';
+import { Message } from '../models/message';
 
 @Component({
   selector: 'app-messages',

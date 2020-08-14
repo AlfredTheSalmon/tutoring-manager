@@ -1,11 +1,8 @@
 import { UserStatus } from '../enum/user-status.enum';
+import { UserBase } from './user-base.model';
 
-export class StudentInfo {
-  id: string;
-  name: string;
+export class StudentInfo extends UserBase {
   fullName: string;
-  age: number;
-  gender: number; //1 = male; 0 = female
   phone: number;
   parent1: string;
   parent1gender: number;
@@ -16,5 +13,6 @@ export class StudentInfo {
   email: string;
   parentEmail: string;
   status: UserStatus;
+  iban: string;
   notes: string[];
 }
