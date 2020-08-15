@@ -48,4 +48,23 @@
     </div>
   </form>
 
+  <hr *ngIf="letterList != null && !loadingLetterList">
+
+  <div class="result" *ngIf="letterList != null && !loadingLetterList">
+    <div *ngFor="let letterGroup of letterList.result">
+      <div class="panel" [ngClass]="{'letter-selected' : openedLetter == letterGroup.letter}">
+        <div class="panel-list-title d-flex clickable" (click)="clickLetter(letterGroup.letter)">
+          <span class="flex-grow-1">
+            {{letterGroup.letter}} - <span class="small">{{letterGroup.count}}</span></span>
+          <img *ngIf="openedLetter != letterGroup.letter" class="alert-image-holder"
+            src="assets/icons/caret-square-up-regular.svg" alt="">
+          <img *ngIf="openedLetter == letterGroup.letter" class="alert-image-holder"
+            src="assets/icons/caret-square-down-solid.svg" alt="">
+        </div>
+      </div>
+      <div class="panel-list" *ngIf="openedLetter == letterGroup.letter">
+        <app-letter-list [content]="studentList" [studentList]="true"></app-letter-list>
+      </div>
+    </div>
+  </div>
 </div>

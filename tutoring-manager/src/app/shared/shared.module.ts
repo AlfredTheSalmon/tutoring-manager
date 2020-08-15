@@ -11,6 +11,7 @@ import { StudentComponent } from './student/student.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TranslatePipe } from './pipes/translate-pipe.pipe';
 import { FormatStringPipe } from './pipes/format-string.pipe';
+import { LetterListComponent } from './letter-list/letter-list.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormatStringPipe } from './pipes/format-string.pipe';
     StudentComponent,
     MessagesComponent,
     TranslatePipe,
-    FormatStringPipe
+    FormatStringPipe,
+    LetterListComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { FormatStringPipe } from './pipes/format-string.pipe';
     StudentComponent,
     MessagesComponent,
     TranslatePipe,
-    FormatStringPipe
+    FormatStringPipe,
+    LetterListComponent
   ]
 })
 export class SharedModule { }

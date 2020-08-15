@@ -33,6 +33,9 @@ export class MessagesService {
 
   addSuccess(msg: string) {
     this.addMsg(MessageType.SUCCESS, msg);
+    setTimeout(function () {
+      that.removeMessage(0);
+    }, 10000);
 
     var that = this;
   }

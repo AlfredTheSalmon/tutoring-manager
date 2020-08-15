@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import { StudentListComponent } from './student-list/student-list.component';
+import { StudentComponent } from './shared/student/student.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,13 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: '', component: StudentListComponent }
+    ]
+  },
+  {
+    path: 'student',
+    component: MainComponent,
+    children: [
+      { path: ':id', component: StudentComponent }
     ]
   },
   {

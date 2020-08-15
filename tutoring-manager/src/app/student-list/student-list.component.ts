@@ -6,6 +6,7 @@ import { UserList } from '../shared/models/user-list.model';
 import { MessagesService } from '../shared/messages/messages.service';
 import { UserLetterGroup } from '../shared/models/user-letter-group.model';
 import { Years } from '../shared/enum/years.enum';
+import { UserBase } from '../shared/models/user-base.model';
 
 @Component({
   selector: 'app-student-list',
@@ -14,16 +15,21 @@ import { Years } from '../shared/enum/years.enum';
 })
 export class StudentListComponent implements OnInit {
 
-  loadingStudentList: boolean = true;
+  loadingLetterList: boolean = false; //individual for each letter
+  loadingStudentList: boolean = true; //global for all letters
   errorLoading: boolean = false;
   possibleYears: string[] = [];
   possibleStatus: string[] = [];
+  previousSearchQuery: StudentListSearchQuery;
 
   year: string;
   gender: string = ''; //both genders
   status: string = UserStatus.ANY;
 
-  studentList: UserList;
+  openedLetter: string;
+
+  letterList: UserList;
+  studentList: UserBase[];
 
   constructor(private userService: UserService,
     private messageService: MessagesService) { }
@@ -31,35 +37,65 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
     this.possibleYears = Object.keys(Years);
     this.possibleStatus = Object.keys(UserStatus);
-    this.getStudentList(UserStatus.ACTIVE);
+    this.searchStudents();
   }
 
   searchStudents() {
     this.messageService.clear();
-    this.getStudentList(this.status, null, this.gender, this.year);
+    let payload = this.preparePayload(this.status, null, this.gender, this.year);
+    this.getStudentList(payload);
   }
 
-  getStudentList(status: string, letter?: string, gender?: string, yearOfSchool?: string) {
-    let payload = this.preparePayload(status, letter, gender, yearOfSchool);
+  getStudentList(payload: StudentListSearchQuery, forLetter?: boolean) {
     console.log(payload);
 
-    this.loadingStudentList = true;
+    if (forLetter) {
+      this.loadingLetterList = true;
+      this.studentList = null;
+    } else {
+      this.loadingStudentList = true;
+      this.letterList = null;
+      this.studentList = null;
+    }
     this.errorLoading = false;
-    this.studentList = null;
 
-    let mockList = new UserList;
-    mockList.count = 3;
-    let letterA = new UserLetterGroup;
-    letterA.letter = 'A';
-    letterA.count = 1;
-    let letterB = new UserLetterGroup;
-    letterB.letter = 'B';
-    letterB.count = 2;
-    mockList.result = [letterA, letterB];
+    if (forLetter) {
+      let mockList: UserBase[] = [];
+      let mock1 = new UserBase;
+      mock1.id = "001";
+      mock1.name = "Albert";
+      mock1.yearOfSchool = "4th";
+      mock1.gender = 1;
+      mock1.age = 8;
 
-    this.loadingStudentList = false;
-    this.studentList = mockList;
-    this.messageService.addSuccess("Found " + this.studentList.count + " students.");
+      let mock2 = new UserBase;
+      mock2.id = "002";
+      mock2.name = "Annie";
+      mock2.yearOfSchool = "5th";
+      mock2.gender = 0;
+      mock2.age = 9;
+
+      mockList = [mock1, mock2];
+      this.loadingLetterList = false;
+      this.studentList = mockList;
+
+    } else {
+      let mockList = new UserList;
+      mockList.count = 3;
+      let letterA = new UserLetterGroup;
+      letterA.letter = 'A';
+      letterA.count = 1;
+      let letterB = new UserLetterGroup;
+      letterB.letter = 'B';
+      letterB.count = 2;
+      mockList.result = [letterA, letterB];
+
+      this.loadingStudentList = false;
+      this.previousSearchQuery = payload;
+      this.letterList = mockList;
+      this.messageService.addSuccess("Found " + this.letterList.count + " students.");
+    }
+
 
     // this.userService.getStudentList(payload).subscribe(
     //   response => {
@@ -73,6 +109,17 @@ export class StudentListComponent implements OnInit {
     //     this.messageService.addError("There was an error while loading the student list");
     //   }
     // )
+  }
+
+  clickLetter(letter: string) {
+    console.log("open letter: ", letter);
+    if (letter == this.openedLetter) {
+      this.openedLetter = null;
+    } else {
+      this.openedLetter = letter;
+      let payload = this.preparePayload(this.previousSearchQuery.status, letter, this.previousSearchQuery.gender, this.previousSearchQuery.yearOfSchool);
+      this.getStudentList(payload, true);
+    }
   }
 
   preparePayload(status: string, letter?: string, gender?: string, yearOfSchool?: string) {

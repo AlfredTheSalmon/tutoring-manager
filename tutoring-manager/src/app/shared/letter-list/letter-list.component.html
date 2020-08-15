@@ -1,0 +1,23 @@
+<div>
+  <table style="width: 100%;">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th *ngIf="studentList">School Year</th>
+      <th *ngIf="!studentList">Lectioned Subjects</th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th class="text-center">Detail</th>
+    </tr>
+    <tr *ngFor="let item of content">
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td *ngIf="studentList">{{item.yearOfSchool}}</td>
+      <td *ngIf="!studentList">{{item.teachedSubjects}}</td>
+      <td>{{item.gender | translate: 'gender'}}</td>
+      <td>{{item.age}}</td>
+      <td class="text-center"><img class="alert-image-holder clickable" [routerLink]="['/student', item.id]"
+          src="assets/icons/external-link-square-alt-solid.svg" alt=""></td>
+    </tr>
+  </table>
+</div>

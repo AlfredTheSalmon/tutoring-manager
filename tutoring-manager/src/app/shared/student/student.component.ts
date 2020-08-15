@@ -19,7 +19,7 @@ export class StudentComponent implements OnInit, OnDestroy {
     private userService: UserService
   ) { }
 
-  @Input() mode: ComponentMode;
+  @Input() mode: ComponentMode = ComponentMode.SOLO;
   @Input() info: StudentInfo;
 
   error: boolean = false;
@@ -39,6 +39,7 @@ export class StudentComponent implements OnInit, OnDestroy {
 
     if (this.mode == ComponentMode.SOLO) {
       this.studentId = this.route.snapshot.paramMap.get('id');
+      console.log("got id: ", this.studentId);
       this.getStudentInfo(this.studentId);
     }
   }
