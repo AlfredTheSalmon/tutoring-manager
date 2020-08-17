@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main/main.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentComponent } from './shared/student/student.component';
+import { ProfessorComponent } from './shared/professor/professor.component';
+import { ProfessorListComponent } from './professor-list/professor-list.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,20 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: ':id', component: StudentComponent }
+    ]
+  },
+  {
+    path: 'professors',
+    component: MainComponent,
+    children: [
+      { path: '', component: ProfessorListComponent }
+    ]
+  },
+  {
+    path: 'professor',
+    component: MainComponent,
+    children: [
+      { path: ':id', component: ProfessorComponent }
     ]
   },
   {

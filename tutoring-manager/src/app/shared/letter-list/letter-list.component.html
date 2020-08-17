@@ -16,7 +16,7 @@
       <td *ngIf="!studentList">{{item.teachedSubjects}}</td>
       <td>{{item.gender | translate: 'gender'}}</td>
       <td>{{item.age}}</td>
-      <td class="text-center"><img class="alert-image-holder clickable" [routerLink]="['/student', item.id]"
+      <td class="text-center"><img class="alert-image-holder clickable" (click)="goToDetail(item.id)"
           src="assets/icons/external-link-square-alt-solid.svg" alt=""></td>
     </tr>
   </table>

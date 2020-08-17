@@ -1,1 +1,167 @@
-<p>professor works!</p>
+<div class="card professor-card" *ngIf="!loadingInfo">
+  <div class="title">
+    {{info.name}}'s information (Professor: {{info.id}})
+  </div>
+  <div class="row">
+    <div class="col-md-5 panel">
+      <div class="panel-title">
+        General
+      </div>
+      <div class="row">
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Id
+          </div>
+          <div class="value">
+            {{info.id}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Status
+          </div>
+          <div class="value">
+            {{info.status | translate: 'userStatus'}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Name
+          </div>
+          <div class="value">
+            {{info.fullName | formatString}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Gender
+          </div>
+          <div class="value">
+            {{info.gender | translate: 'gender'}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Age
+          </div>
+          <div class="value">
+            {{info.age}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Teached Subjects
+          </div>
+          <div class="value">
+            {{info.teachedSubjects | formatString}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-md-5 panel">
+      <div class="panel-title">
+        Family
+      </div>
+      <div class="row">
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Parent
+          </div>
+          <div class="value">
+            {{info.parent1 | formatString}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Gender
+          </div>
+          <div class="value">
+            {{info.parent1gender | translate: 'gender'}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child" *ngIf="info.parent2 != null">
+          <div class="label">
+            Parent
+          </div>
+          <div class="value">
+            {{info.parent2 | formatString}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child" *ngIf="info.parent2 != null">
+          <div class="label">
+            Gender
+          </div>
+          <div class="value">
+            {{info.parent2gender | translate: 'gender'}}
+          </div>
+        </div>
+        <div class="col-md-12 panel-child">
+          <div class="label">
+            Address
+          </div>
+          <div class="value">
+            {{info.address | formatString}}
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <div class="col-md-5 panel">
+      <div class="panel-title">
+        Comunications
+      </div>
+      <div class="row">
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Address
+          </div>
+          <div class="value">
+            {{info.address | formatString}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Email
+          </div>
+          <div class="value">
+            {{info.email | formatString}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Last Lesson
+          </div>
+          <div class="value">
+            {{info.lastLesson}}
+          </div>
+        </div>
+        <div class="col-md-6 panel-child">
+          <div class="label">
+            Joined year
+          </div>
+          <div class="value">
+            {{info.joinedTs}}
+          </div>
+        </div>
+        <div class="col-md-12 panel-child">
+          <div class="label">
+            Iban
+          </div>
+          <div class="value">
+            {{info.iban | formatString}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div *ngIf="info.notes == null" class="col-md-5"></div>
+    <div *ngIf="info.notes != null" class="col-md-5 panel">
+      <div class="panel-title">
+        Notes
+      </div>
+      <div *ngFor="let note of info.notes; index as i" class="value col-md-12">
+        <span class="text-bold">{{i+1}}</span> - {{note}}
+      </div>
+    </div>
+  </div>
+</div>

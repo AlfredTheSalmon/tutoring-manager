@@ -9,13 +9,15 @@ import { MainComponent } from './main/main.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentListComponent } from './student-list/student-list.component';
+import { ProfessorListComponent } from './professor-list/professor-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MainComponent,
-    StudentListComponent
+    StudentListComponent,
+    ProfessorListComponent
   ],
   imports: [
     HttpClientModule,

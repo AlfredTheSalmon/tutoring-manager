@@ -1,5 +1,4 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
-import { StudentListSearchQuery } from '../shared/models/student-list-search-query.model';
 import { UserStatus } from '../shared/enum/user-status.enum';
 import { UserService } from '../shared/services/user-service.service';
 import { UserList } from '../shared/models/user-list.model';
@@ -7,21 +6,21 @@ import { MessagesService } from '../shared/messages/messages.service';
 import { UserLetterGroup } from '../shared/models/user-letter-group.model';
 import { Years } from '../shared/enum/years.enum';
 import { UserBase } from '../shared/models/user-base.model';
+import { ProfessorListSearchQuery } from '../shared/models/professor-list-search-query.model';
 
 @Component({
-  selector: 'app-student-list',
-  templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.css'],
+  selector: 'app-professor-list',
+  templateUrl: './professor-list.component.html',
+  styleUrls: ['./professor-list.component.css'],
 })
-export class StudentListComponent implements OnInit {
+export class ProfessorListComponent implements OnInit {
 
   loadingLetterList: boolean = false; //individual for each letter
-  loadingStudentList: boolean = true; //global for all letters
+  loadingProfessorList: boolean = true; //global for all letters
   errorLoading: boolean = false;
   possibleYears: string[] = [];
   possibleStatus: string[] = [];
-  previousSearchQuery: StudentListSearchQuery; //possible use when detail is used in a modal, or in a seperate component
-
+  previousSearchQuery: ProfessorListSearchQuery; //possible use when detail is used in a modal, or in a seperate component
 
   year: string;
   gender: string = ''; //both genders
@@ -30,7 +29,7 @@ export class StudentListComponent implements OnInit {
   openedLetter: string;
 
   letterList: UserList;
-  studentList: UserBase[];
+  professorList: UserBase[];
 
   constructor(private userService: UserService,
     private messageService: MessagesService) { }
@@ -38,25 +37,25 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
     this.possibleYears = Object.keys(Years);
     this.possibleStatus = Object.keys(UserStatus);
-    this.searchStudents();
+    this.searchProfessors();
   }
 
-  searchStudents() {
+  searchProfessors() {
     this.messageService.clear();
     let payload = this.preparePayload(this.status, null, this.gender, this.year);
-    this.getStudentList(payload);
+    this.getProfessorList(payload);
   }
 
-  getStudentList(payload: StudentListSearchQuery, forLetter?: boolean) {
+  getProfessorList(payload: ProfessorListSearchQuery, forLetter?: boolean) {
     console.log(payload);
 
     if (forLetter) {
       this.loadingLetterList = true;
-      this.studentList = null;
+      this.professorList = null;
     } else {
-      this.loadingStudentList = true;
+      this.loadingProfessorList = true;
       this.letterList = null;
-      this.studentList = null;
+      this.professorList = null;
     }
     this.errorLoading = false;
 
@@ -65,20 +64,20 @@ export class StudentListComponent implements OnInit {
       let mock1 = new UserBase;
       mock1.id = "001";
       mock1.name = "Albert";
-      mock1.yearOfSchool = "4th";
+      mock1.teachedSubjects = "3rd, 4th, 5th";
       mock1.gender = 1;
       mock1.age = 8;
 
       let mock2 = new UserBase;
       mock2.id = "002";
       mock2.name = "Annie";
-      mock2.yearOfSchool = "5th";
+      mock2.teachedSubjects = "5th, 6th, 7th, 8th, 9th";
       mock2.gender = 0;
       mock2.age = 9;
 
       mockList = [mock1, mock2];
       this.loadingLetterList = false;
-      this.studentList = mockList;
+      this.professorList = mockList;
 
     } else {
       let mockList = new UserList;
@@ -91,23 +90,23 @@ export class StudentListComponent implements OnInit {
       letterB.count = 2;
       mockList.result = [letterA, letterB];
 
-      this.loadingStudentList = false;
+      this.loadingProfessorList = false;
       this.previousSearchQuery = payload;
       this.letterList = mockList;
-      this.messageService.addSuccess("Found " + this.letterList.count + " students.");
+      this.messageService.addSuccess("Found " + this.letterList.count + " professors.");
     }
 
 
-    // this.userService.getStudentList(payload).subscribe(
+    // this.userService.getProfessorList(payload).subscribe(
     //   response => {
-    //     this.studentList = response;
-    //     this.loadingStudentList = false;
+    //     this.professorList = response;
+    //     this.loadingProfessorList = false;
 
     //   },
     //   error => {
-    //     this.loadingStudentList = false;
+    //     this.loadingProfessorList = false;
     //     this.errorLoading = true;
-    //     this.messageService.addError("There was an error while loading the student list");
+    //     this.messageService.addError("There was an error while loading the professor list");
     //   }
     // )
   }
@@ -118,16 +117,16 @@ export class StudentListComponent implements OnInit {
       this.openedLetter = null;
     } else {
       this.openedLetter = letter;
-      let payload = this.preparePayload(this.previousSearchQuery.status, letter, this.previousSearchQuery.gender, this.previousSearchQuery.yearOfSchool);
-      this.getStudentList(payload, true);
+      let payload = this.preparePayload(this.previousSearchQuery.status, letter, this.previousSearchQuery.gender, this.previousSearchQuery.teachedSubject);
+      this.getProfessorList(payload, true);
     }
   }
 
-  preparePayload(status: string, letter?: string, gender?: string, yearOfSchool?: string) {
-    let payload = new StudentListSearchQuery;
+  preparePayload(status: string, letter?: string, gender?: string, teachedSubject?: string) {
+    let payload = new ProfessorListSearchQuery;
     payload.letter = letter;
     payload.gender = gender;
-    payload.yearOfSchool = yearOfSchool;
+    payload.teachedSubject = teachedSubject;
     payload.status = status;
     return payload;
   }

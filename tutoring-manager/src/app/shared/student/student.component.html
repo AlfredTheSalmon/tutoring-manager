@@ -1,6 +1,6 @@
 <div class="card student-card" *ngIf="!loadingInfo">
   <div class="title">
-    {{info.name}}'s information ({{info.id}})
+    {{info.name}}'s information (Student: {{info.id}})
   </div>
   <div class="row">
     <div class="col-md-5 panel">
@@ -95,7 +95,7 @@
             {{info.parent2gender | translate: 'gender'}}
           </div>
         </div>
-        <div class="col-md-6 panel-child">
+        <div class="col-md-12 panel-child">
           <div class="label">
             Address
           </div>
