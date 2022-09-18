@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { StudentInfo } from '../models/student-info.model';
-import { ProfessorInfo } from '../professor/professor-info.service';
+import { ProfessorInfo } from '../models/professor-info.model';
 import { StudentListSearchQuery } from 'src/app/shared/models/student-list-search-query.model';
 import { UserList } from 'src/app/shared/models/user-list.model';
 
