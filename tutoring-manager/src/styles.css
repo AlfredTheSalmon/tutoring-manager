@@ -25,6 +25,7 @@
   max-width: 1337px;
   position: relative;
   margin: auto;
+
 }
 
 body {
@@ -52,7 +53,7 @@ body {
   font-weight: 200;
   background: #f8f0ff;
   /* box-shadow: 0px 0px 3px black; */
-  border-radius: 10px;
+  /* border-radius: 10px; */
   margin: 0px auto;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -104,7 +105,7 @@ body {
 .alert{
   border-radius: 0;
   border: 0;
-  padding: 5px 15px;
+  /* padding: 5px 15px; */
   margin: 10px;
 }
 .alert-danger{
@@ -191,7 +192,7 @@ body {
   overflow: hidden;
   background-color: #616161;
   margin-left: -15px;
-  margin-right: -5px;
+  margin-right: -10px;
 }
 
 /* Style the topnav links */
@@ -250,7 +251,7 @@ body {
   padding: 25px;
   margin-top: 20px;
   /* box-shadow: 0px 0px 4px black; */
-  border-radius: 10px;
+  border-radius: unset;
 }
 
 .card .title {
