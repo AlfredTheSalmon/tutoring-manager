@@ -1,1 +1,0 @@
-{"ast":null,"code":"export var UserStatus = /*#__PURE__*/function (UserStatus) {\n  UserStatus[\"ANY\"] = \"0\";\n  UserStatus[\"ACTIVE\"] = \"1\";\n  UserStatus[\"DELETED\"] = \"2\";\n  UserStatus[\"CANCELED\"] = \"3\";\n  return UserStatus;\n}(UserStatus || {});","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

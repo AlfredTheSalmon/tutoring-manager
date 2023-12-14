@@ -1,1 +1,0 @@
-{"ast":null,"code":"export var ComponentMode = /*#__PURE__*/function (ComponentMode) {\n  ComponentMode[ComponentMode[\"EMBEDDED\"] = 0] = \"EMBEDDED\";\n  ComponentMode[ComponentMode[\"SOLO\"] = 1] = \"SOLO\";\n  return ComponentMode;\n}(ComponentMode || {});","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
