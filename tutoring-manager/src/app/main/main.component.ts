@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  public hideFunctionPanel: boolean = false;
+
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.data.subscribe(data => {
+      if (data.hideFunctionPanel != undefined) {
+        this.hideFunctionPanel = data.hideFunctionPanel;
+      }
+  })
   }
 
 }

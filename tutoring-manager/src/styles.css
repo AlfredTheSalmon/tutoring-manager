@@ -264,6 +264,10 @@ body {
   margin: initial;
 }
 
+.center-column.expanded {
+  width: 80%;
+}
+
 /* Right column */
 .right-column {
   float: right;
