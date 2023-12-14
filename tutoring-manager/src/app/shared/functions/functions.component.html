@@ -1,5 +1,21 @@
 <div class="card">
-  <p>functions
-    works!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    ------------</p>
-</div>
+  <span class="title">Notes</span>
+  <div *ngIf="professorNotes == null"></div>
+  <div *ngIf="professorNotes != null">
+    <ng-container *ngFor="let note of professorNotes; index as i">
+      <div class="panel">
+        <div class="col-md-12 note-title">
+          {{note.noteTitle}}
+        </div>
+        <div class="col-md-12 note-body">
+          {{note.noteBody}}
+        </div>
+        <div class="col-md-12 note-footer">
+          <button class="btn btn-icon float-left expand-btn" (click)="editNote(i)"><img class="edit-image-holder-svg margin-right-5"
+              src="assets/icons/pen-to-square-solid.svg" alt="Edit">Edit</button>
+          <button class="btn btn-icon float-right expand-btn" (click)="removeNote(i)">Delete<img class="remove-image-holder-svg margin-left-5"
+            src="assets/icons/xmark-solid.svg" alt="Remove"></button>
+        </div>
+      </div>
+    </ng-container>
+  </div>

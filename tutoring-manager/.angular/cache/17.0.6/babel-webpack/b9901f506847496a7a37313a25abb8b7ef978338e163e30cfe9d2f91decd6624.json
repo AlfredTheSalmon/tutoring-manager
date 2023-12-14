@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { UserBase } from './user-base.model';\nexport class ProfessorInfo extends UserBase {}\nexport class ProfessorNote {}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

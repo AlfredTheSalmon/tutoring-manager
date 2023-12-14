@@ -7,6 +7,7 @@ import { MessageType } from '../enum/message-type.enum';
   providedIn: 'root'
 })
 export class MessagesService {
+  
 
   messages: Message[] = [];
 

@@ -102,6 +102,30 @@ body {
   font-weight: bold;
 }
 
+.note-title {
+  font-weight: 400;
+  font-size: 18px;
+  border-bottom: 1px solid #616161;
+  margin-bottom: unset !important;
+  text-align: center;
+  padding: 5px;
+}
+
+.note-body {
+  font-size: 13px;
+  padding: 7px;
+  margin-bottom: unset !important;
+  border-bottom: 1px solid #616161;
+}
+
+.note-footer {
+  padding-bottom: 30px;
+}
+
+.note-footer button {
+  padding: unset;
+}
+
 .alert{
   border-radius: 0;
   border: 0;
@@ -134,6 +158,16 @@ body {
 .alert-image-holder img {
   width: 50%;
   height: auto;
+}
+
+.edit-image-holder-svg {
+  width: 20px;
+  display: inline-block;
+}
+
+.remove-image-holder-svg {
+  width: 20px;
+  display: inline-block;
 }
 
 .clickable {
@@ -273,6 +307,14 @@ body {
   text-align: center;
   background: #ddd;
   margin-top: 20px;
+}
+
+.margin-right-5 {
+  margin-right: 5px;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */

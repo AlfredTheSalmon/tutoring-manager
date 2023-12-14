@@ -10,5 +10,9 @@ export class ProfessorInfo extends UserBase {
   lastLesson: string;
   joinedTs: string;
   iban: string;
-  notes: string[];
+}
+
+export class ProfessorNote {
+  noteTitle: string;
+  noteBody: string;
 }

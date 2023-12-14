@@ -3,8 +3,9 @@ import { MessagesService } from '../messages/messages.service';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../services/user-service.service';
 import { ComponentMode } from '../enum/component-mode.enum';
-import { ProfessorInfo } from '../models/professor-info.model';
+import { ProfessorInfo, ProfessorNote } from '../models/professor-info.model';
 import { UserStatus } from '../enum/user-status.enum';
+import { SidePanelsPubSub } from '../pub-sub/side-panels-pub-sub.service';
 
 @Component({
   selector: 'app-professor',
@@ -15,6 +16,7 @@ export class ProfessorComponent implements OnInit {
 
   constructor(
     private messageService: MessagesService,
+    private sidePanelsPubSub: SidePanelsPubSub,
     private route: ActivatedRoute,
     private userService: UserService
   ) { }
@@ -60,12 +62,6 @@ export class ProfessorComponent implements OnInit {
     professorInfo.phone = 123456789;
     professorInfo.iban = "PT50123456789123456789";
 
-    let note1 = "note 1";
-    let note2 = "note 2";
-    let note3 = "note 3";
-
-    professorInfo.notes = [note1, note2, note3];
-
     this.info = professorInfo;
     this.loadingInfo = false;
     // this.userService.getProfessor(professorId).subscribe(
@@ -77,10 +73,41 @@ export class ProfessorComponent implements OnInit {
     //     this.error = true;
     //   }
     // )
+
+    let professorNotes: ProfessorNote[] = undefined;
+
+    let note1 = new ProfessorNote;
+    note1.noteTitle = "Dário's mom number";
+    note1.noteBody = "+351 123456789";
+    
+    let note2 = new ProfessorNote;
+    note2.noteTitle = "Bring for Mathilda's next lesson";
+    note2.noteBody = "Math book XYZ from 8º grade.";
+    
+    let note3 = new ProfessorNote;
+    note3.noteTitle = "Reschedule";
+    note3.noteBody = "Ask for a reschedule of the lessons 2 weeks from now on day 18.";
+
+    professorNotes = [note1, note2, note3];
+    // this.userService.getProfessorNoteList(professorId).subscribe(
+    //   response => {
+    //       professorNotes = response;
+    //       this.syncProfessorNotes(professorNotes);
+    //     },
+    //     error => {
+    //       this.error = true;
+    //     }
+    // )
+
+    this.syncProfessorNotes(professorNotes);
   }
 
   comunicateInfo(info: ProfessorInfo) {
 
+  }
+
+  syncProfessorNotes(info: ProfessorNote[]) {
+    this.sidePanelsPubSub.syncProfessorNotes(info);
   }
 
   ngOnDestroy() {

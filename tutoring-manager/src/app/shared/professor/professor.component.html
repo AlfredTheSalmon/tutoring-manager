@@ -152,16 +152,5 @@
         </div>
       </div>
     </div>
-
-
-    <div *ngIf="info.notes == null" class="col-md-5"></div>
-    <div *ngIf="info.notes != null" class="col-md-5 panel">
-      <div class="panel-title">
-        Notes
-      </div>
-      <div *ngFor="let note of info.notes; index as i" class="value col-md-12">
-        <span class="text-bold">{{i+1}}</span> - {{note}}
-      </div>
-    </div>
   </div>
 </div>
