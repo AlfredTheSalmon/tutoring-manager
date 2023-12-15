@@ -17,35 +17,40 @@ const routes: Routes = [
     path: 'home',
     component: MainComponent,
     children: [
-      { path: '', component: HomeComponent }
+      { path: '', component: HomeComponent },
+      { path: '**', redirectTo: '/home', pathMatch: 'full' }
     ]
   },
   {
     path: 'students',
     component: MainComponent,
     children: [
-      { path: '', component: StudentListComponent }
+      { path: '', component: StudentListComponent },
+      { path: '**', redirectTo: '/students', pathMatch: 'full' }
     ]
   },
   {
     path: 'student',
     component: MainComponent,
     children: [
-      { path: ':id', component: StudentComponent }
+      { path: ':id', component: StudentComponent },
+      { path: '**', redirectTo: '/students', pathMatch: 'full' }
     ]
   },
   {
     path: 'professors',
     component: MainComponent,
     children: [
-      { path: '', component: ProfessorListComponent }
+      { path: '', component: ProfessorListComponent },
+      { path: '**', redirectTo: '/professors', pathMatch: 'full' }
     ]
   },
   {
     path: 'professor',
     component: MainComponent,
     children: [
-      { path: ':id', component: ProfessorComponent }
+      { path: ':id', component: ProfessorComponent },
+      { path: '**', redirectTo: '/professors', pathMatch: 'full' }
     ]
   },
   {
