@@ -21,6 +21,14 @@ There are also some components that are not in use at this moment, as i needed t
 - A direct navigation component present in all of the app, which aims to provide quick actions to the user.
 - A production environment that aims to hide certain dev elements from the end user, such as a Debug Menu on the bottom part of the screen
 
+Future updates: 
+- Finish the notes workflow
+- Add a tutoring lesson detail page
+- Implement a home page calendar with marked days of when there are lessons and from start to finish times
+- Create a mock back-end with mock content to connect with the existing REST endpoints. Also add a "loading" icon to display when those calls are being made
+- Add authentication security and login information with ROLES, to hide parts of the client to the user. Prevent direct access to those URLs as well
+- Find a better Color scheme, and UI layout
+
 I hope you can see my vision, even if ugly, of what a tutoring manager can do to help facilitate and organize the life of professors within a tutoring center. 
 
 ## Development server
