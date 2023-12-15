@@ -2,4 +2,28 @@
     <div class="title">
       Notes List
     </div>
+    <div class="body table col-md-12">
+
+      <table class="note-table" style="width: 100%;">
+        <tr class="item">
+          <td style="width: 30%">Title</td>
+          <td style="width: 60%">Message</td>
+          <td style="width: 5%"></td>
+          <td style="width: 5%"></td>
+        </tr>
+        <tr *ngFor="let note of notesList; index as i" class="item">
+          <td>{{note.noteTitle}}</td>
+          <td>{{note.noteBody}}</td>
+          <td><button class="btn btn-icon expand-btn" (click)="editMessage(i)"><img class="edit-image-holder-svg margin-right-5"
+            src="assets/icons/pen-to-square-solid.svg" alt="Edit">Edit*</button></td>
+          <td><button class="btn btn-icon expand-btn" (click)="deleteMessage(i)"><img class="remove-image-holder-svg margin-left-5"
+            src="assets/icons/xmark-solid.svg" alt="Remove">Delete*</button></td>
+        </tr>
+        <tr class="item">
+          <td class="d-flex justify-content-center">
+            <button class="btn btn-icon expand-btn" (click)="newNote()">New..*</button>
+          </td>
+        </tr>
+      </table>
+    </div>
 </div>

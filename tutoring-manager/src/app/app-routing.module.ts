@@ -8,8 +8,9 @@ import { StudentComponent } from './shared/student/student.component';
 import { ProfessorComponent } from './shared/professor/professor.component';
 import { ProfessorListComponent } from './professor-list/professor-list.component';
 import { NoteListComponent } from './notes/note-list.component';
-import { NoteEditComponent } from './notes/note-edit/note-edit.component';
-import { NoteDeleteComponent } from './notes/note-delete/note-delete.component';
+// import { NoteEditComponent } from './notes/note-edit/note-edit.component';
+// import { NoteDeleteComponent } from './notes/note-delete/note-delete.component';
+// import { NoteCreateComponent } from './notes/note-create/note-create.component';
 
 const routes: Routes = [
   {
@@ -52,8 +53,9 @@ const routes: Routes = [
     component: MainComponent, data: {hideFunctionPanel:'true'},
     children: [
       { path: '', component: NoteListComponent },
-      { path: ':id/edit', component: NoteEditComponent },
-      { path: ':id/delete', component: NoteDeleteComponent},
+      // { path: ':create', component: NoteCreateComponent },
+      // { path: ':id/edit', component: NoteEditComponent },
+      // { path: ':id/delete', component: NoteDeleteComponent},
       { path: '**', redirectTo: '/notes', pathMatch: 'full' }
     ]
   },

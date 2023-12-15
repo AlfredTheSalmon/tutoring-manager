@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentListComponent } from './student-list/student-list.component';
 import { ProfessorListComponent } from './professor-list/professor-list.component';
+import { NoteListComponent } from './notes/note-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ProfessorListComponent } from './professor-list/professor-list.componen
     HomeComponent,
     MainComponent,
     StudentListComponent,
-    ProfessorListComponent
+    ProfessorListComponent,
+    NoteListComponent
   ],
   imports: [
     HttpClientModule,

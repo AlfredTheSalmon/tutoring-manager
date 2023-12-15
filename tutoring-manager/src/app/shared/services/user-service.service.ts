@@ -7,6 +7,7 @@ import { StudentInfo } from '../models/student-info.model';
 import { ProfessorInfo, ProfessorNote } from '../models/professor-info.model';
 import { StudentListSearchQuery } from 'src/app/shared/models/student-list-search-query.model';
 import { UserList } from 'src/app/shared/models/user-list.model';
+import { UserStatus } from '../enum/user-status.enum';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -56,7 +57,44 @@ export class UserService {
     );
   }
 
+  getProfessorMock(): ProfessorInfo {
+    let professorInfo = new ProfessorInfo;
+    professorInfo.id = "123";
+    professorInfo.age = 12;
+    professorInfo.name = "Manuel";
+    professorInfo.fullName = "Manuel Rodrigues de Carvalho";
+    professorInfo.gender = 1;
+    professorInfo.teachedSubjects = "9th";
+    professorInfo.lastLesson = "30 February 2020";
+    professorInfo.joinedTs = "1 January 2020";
+    professorInfo.email = "nothing@gmail.com";
+    professorInfo.status = UserStatus.ACTIVE;
+    professorInfo.address = "address 1";
+    professorInfo.phone = 123456789;
+    professorInfo.iban = "PT50123456789123456789";
+    
+    return professorInfo;
+  }
 
+  getProfessorNoteListMock(): ProfessorNote[] {
+    let professorNotes: ProfessorNote[] = undefined;
+
+    let note1 = new ProfessorNote;
+    note1.noteTitle = "Dário's mom number";
+    note1.noteBody = "+351 123456789";
+    
+    let note2 = new ProfessorNote;
+    note2.noteTitle = "Bring for Mathilda's next lesson";
+    note2.noteBody = "Math book XYZ from 8º grade.";
+    
+    let note3 = new ProfessorNote;
+    note3.noteTitle = "Reschedule";
+    note3.noteBody = "Ask for a reschedule of the lessons 2 weeks from now on day 18.";
+
+    professorNotes = [note1, note2, note3];
+
+    return professorNotes;
+  }
   
 
 }

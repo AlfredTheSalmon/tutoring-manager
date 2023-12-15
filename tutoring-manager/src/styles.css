@@ -163,11 +163,13 @@ body {
 .edit-image-holder-svg {
   width: 20px;
   display: inline-block;
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(96%) contrast(104%);
 }
 
 .remove-image-holder-svg {
   width: 20px;
   display: inline-block;
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(324deg) brightness(96%) contrast(104%);
 }
 
 .clickable {
@@ -296,6 +298,24 @@ body {
   font-family: 'Quantico', sans-serif;
   font-weight: 400;
   font-size: 35px;
+}
+
+.card .table {
+  background-color: #aaa;
+}
+
+.note-table {
+  width: max-content;
+}
+
+.note-table .item {
+ align-items: center;
+}
+
+.note-table .item td {
+  padding: 5px;
+  vertical-align: middle;
+  border: unset;
 }
 
 /* Clear floats after the columns */
