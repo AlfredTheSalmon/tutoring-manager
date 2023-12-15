@@ -7,7 +7,7 @@
     <app-functions>
     </app-functions>
   </div>
-  <div [ngClass]="{'center-column': !hideFunctionPanel, 'center-column expanded': hideFunctionPanel}">
+  <div class="center-column" [ngClass]="{'expanded': hideFunctionPanel}">
     <router-outlet id="main content"></router-outlet>
   </div>
   <div class="right-column">
