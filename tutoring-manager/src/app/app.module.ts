@@ -10,7 +10,11 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentListComponent } from './student-list/student-list.component';
 import { ProfessorListComponent } from './professor-list/professor-list.component';
-import { NoteListComponent } from './notes/note-list.component';
+import { NotesComponent } from './notes/notes.component';
+import { NoteListComponent } from './notes/note-list/note-list.component';
+import { NoteCreateComponent } from './notes/note-create/note-create.component';
+import { NoteDeleteComponent } from './notes/note-delete/note-delete.component';
+import { NoteEditComponent } from './notes/note-edit/note-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,7 @@ import { NoteListComponent } from './notes/note-list.component';
     MainComponent,
     StudentListComponent,
     ProfessorListComponent,
-    NoteListComponent
+    NotesComponent
   ],
   imports: [
     HttpClientModule,
@@ -27,7 +31,13 @@ import { NoteListComponent } from './notes/note-list.component';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    // Standalone Components
+    NoteListComponent,
+    NoteCreateComponent,
+    NoteDeleteComponent,
+    NoteEditComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

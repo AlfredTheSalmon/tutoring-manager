@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { StudentInfo } from '../models/student-info.model';
@@ -35,6 +35,10 @@ export class UserService {
     );
   }
 
+  getProfessorId(): string {
+    return this.professorInfoCached.id;
+  }
+
   getStudent(payload: string): Observable<StudentInfo> {
     const url = `${this.getStudentURL}/${payload}`;
     return this.http.post<void>(url, httpOptions).pipe(
@@ -57,6 +61,14 @@ export class UserService {
     );
   }
 
+  getProfessorNoteDetail(professor: string, index: number): Observable<ProfessorNote> {
+    const url = `${this.getProfessorNotesURL}/${professor}/${index}`;
+    return this.http.post<void>(url, httpOptions).pipe(
+      tap((response: any) => console.log('get professor note ok response:', response),
+        (response: any) => console.log('get professor note error response:', response))
+    );
+  }
+
   getProfessorMock(): ProfessorInfo {
     let professorInfo = new ProfessorInfo;
     professorInfo.id = "123";
@@ -72,11 +84,14 @@ export class UserService {
     professorInfo.address = "address 1";
     professorInfo.phone = 123456789;
     professorInfo.iban = "PT50123456789123456789";
+
+    this.professorInfoCached = professorInfo;
+    console.log("professor cache updated");
     
     return professorInfo;
   }
 
-  getProfessorNoteListMock(): ProfessorNote[] {
+  MOCKCreateProfessorNoteList(): ProfessorNote[] {
     let professorNotes: ProfessorNote[] = undefined;
 
     let note1 = new ProfessorNote;
@@ -92,9 +107,18 @@ export class UserService {
     note3.noteBody = "Ask for a reschedule of the lessons 2 weeks from now on day 18.";
 
     professorNotes = [note1, note2, note3];
-
+    
     return professorNotes;
   }
-  
+
+  getProfessorNoteListMock(): ProfessorNote[] {
+    return this.MOCKCreateProfessorNoteList();
+  }
+
+  getProfessorNoteDetailMock(professor: string, index: number): Observable<ProfessorNote> {
+    console.log("Got call for professor note detail with id ", professor, " and index ", index);
+    let professorNotes = this.MOCKCreateProfessorNoteList();
+    return of(professorNotes[index]);
+  }
 
 }

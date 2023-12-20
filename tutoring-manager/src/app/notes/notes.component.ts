@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { MessagesService } from '../shared/messages/messages.service';
 import { UserService } from '../shared/services/user-service.service';
 import { ProfessorNote } from '../shared/models/professor-info.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-note-list',
-  templateUrl: './note-list.component.html',
-  styleUrl: './note-list.component.css'
+  selector: 'app-notes',
+  templateUrl: './notes.component.html',
+  styleUrl: './notes.component.css'
 })
-export class NoteListComponent implements OnInit {
+export class NotesComponent implements OnInit {
 
   notesList: ProfessorNote[];
   
@@ -31,15 +31,5 @@ export class NoteListComponent implements OnInit {
     // )
   }
 
-  editMessage(index: number) {
-    this.router.navigate(["/notes", index, "/edit"]);
-  }
-
-  deleteMessage(index: number) {
-    this.router.navigate(["/notes", index, "/delete"]);
-  }
-
-  newNote() {
-    this.router.navigate(["/notes/create"]);
-  }
+  
 }

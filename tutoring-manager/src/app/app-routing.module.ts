@@ -7,10 +7,8 @@ import { StudentListComponent } from './student-list/student-list.component';
 import { StudentComponent } from './shared/student/student.component';
 import { ProfessorComponent } from './shared/professor/professor.component';
 import { ProfessorListComponent } from './professor-list/professor-list.component';
-import { NoteListComponent } from './notes/note-list.component';
-// import { NoteEditComponent } from './notes/note-edit/note-edit.component';
-// import { NoteDeleteComponent } from './notes/note-delete/note-delete.component';
-// import { NoteCreateComponent } from './notes/note-create/note-create.component';
+import { NotesComponent } from './notes/notes.component';
+import { NoteEditComponent } from './notes/note-edit/note-edit.component';
 
 const routes: Routes = [
   {
@@ -57,9 +55,12 @@ const routes: Routes = [
     path: 'notes',
     component: MainComponent, data: {hideFunctionPanel:'true'},
     children: [
-      { path: '', component: NoteListComponent },
+      { path: '', component: NotesComponent },
+      { path: '/edit/:index', loadComponent: () => import('./notes/note-edit/note-edit.component').then(mod => mod.NoteEditComponent)},
+      { path: 'delete/:index', loadComponent: () => import('./notes/note-delete/note-delete.component').then(mod => mod.NoteDeleteComponent)},
+      { path: 'create', loadComponent: () => import('./notes/note-create/note-create.component').then(mod => mod.NoteCreateComponent)},
       // { path: ':create', component: NoteCreateComponent },
-      // { path: ':id/edit', component: NoteEditComponent },
+      // { path: 'edit/:index', component: NoteEditComponent },
       // { path: ':id/delete', component: NoteDeleteComponent},
       { path: '**', redirectTo: '/notes', pathMatch: 'full' }
     ]
